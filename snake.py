@@ -1,4 +1,3 @@
-# TODO: create a snake body
 from turtle import Turtle, Screen
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
@@ -12,6 +11,7 @@ WEST = 180
 class Snake:
 
     def __init__(self):
+        # create a snake body
         self.segments = []
         self.create_snake()
 
@@ -24,6 +24,7 @@ class Snake:
             self.segments.append(new_segment)
 
     def move(self):
+        # move snake using keys(arrows)
         for seg_num in range(len(self.segments) - 1, 0, -1):
             new_x = self.segments[seg_num - 1].xcor()
             new_y = self.segments[seg_num - 1].ycor()
