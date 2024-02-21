@@ -1,4 +1,6 @@
 from turtle import Screen, Turtle
+from snake import Snake
+import time
 
 # Screen setup
 screen = Screen()
@@ -7,26 +9,22 @@ screen.bgcolor("black")
 screen.title("My snake game")
 screen.tracer(0)
 
-# TODO: create a snake body
-squares = []
+snake = Snake()
 
-starting_positions = [(0, 0), (-20, 0), (-40, 0)]
-
-for position in starting_positions:
-    new_square = Turtle(shape="square")
-    new_square.color("white")
-    new_square.penup()
-    new_square.goto(position)
-    squares.append(new_square)
-
-screen.update()
+screen.listen()
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.down, "Down")
+screen.onkey(snake.left, "Left")
+screen.onkey(snake.right, "Right")
 
 # TODO: move snake using keys(arrows or 'awsd')
 game_is_on = True
 while game_is_on:
     screen.update()
-    for square in squares:
-        square.forward(20)
+    time.sleep(0.1)
+
+    snake.move()
+
 
 # TODO: create food
 # TODO: detect collision with food
