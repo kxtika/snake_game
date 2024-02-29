@@ -1,3 +1,4 @@
+# create a scoreboard
 from turtle import Turtle
 TOP_CENTER_X_Y = (0, 280)
 FONT = ("Courier", 10, "normal")
@@ -16,3 +17,8 @@ class Scoreboard(Turtle):
 
     def refresh(self):
         self.write(align=ALIGNMENT, font=FONT, arg=f"Score: {self.score}")
+
+    def game_over(self):
+        self.penup()
+        self.home()
+        self.write(align=ALIGNMENT, font=FONT, arg="Game over")

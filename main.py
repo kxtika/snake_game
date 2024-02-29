@@ -4,6 +4,8 @@ from food import Food
 from scoreboard import Scoreboard
 import time
 
+SCREEN_BORDER_P = 285
+SCREEN_BORDER_N = -285
 COLLISION_DISTANCE = 15
 
 # Screen setup
@@ -37,10 +39,17 @@ while game_is_on:
         scoreboard.clear()
         scoreboard.refresh()
 
-# TODO: create a scoreboard
+        # add a block to snake's body
+        snake.extend()
 
-# TODO: add a block to snake's body
-# TODO: detect collision with the wall
+    # detect collision with the wall
+    if snake.head.xcor() > SCREEN_BORDER_P or snake.head.xcor() < SCREEN_BORDER_N or snake.head.ycor() > SCREEN_BORDER_P or snake.head.ycor() < SCREEN_BORDER_N:
+        game_is_on = False
+        scoreboard.game_over()
 
-# TODO: detect collision with the tail
+    # detect collision with the tail
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
+            game_is_on = False
+            scoreboard.game_over()
 screen.exitonclick()
